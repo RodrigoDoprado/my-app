@@ -21,3 +21,8 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+yarn.lock
+setupTests.ts
+react-app-env.d.ts
+package-lock.json
+tsconfig.json
