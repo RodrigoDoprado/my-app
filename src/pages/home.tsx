@@ -1,7 +1,8 @@
 import { Helmet } from "react-helmet";
 import { useState, useEffect } from "react";
 import { Api } from "../service";
-import CardMedio from "../componete/cardMedio";
+import Card from "../componete/card";
+import { toast } from "react-toastify";
 
 export default function Home() {
 
@@ -15,10 +16,9 @@ export default function Home() {
         }
     }, [])
     const getProduct = async () => {
-        const result = await Api.get("index");
-        if (result.status === 200) {
-            setData(result.data);
-            // alert(result.data.message);
+        const response = await Api.get("/product/index");
+        if (response.status === 200) {
+            toast.success(response.data);
         }
     }
 
@@ -29,23 +29,28 @@ export default function Home() {
             {/* <Haeder /> */}
             <section className="resume-section">
                 <div className="resume-section-content">
-                    {data.length > 0 ? (<>
-                        {data.map((item: any, index: any) => {
-                            return (
-                                <div className="col-sm-3">
-                                    <CardMedio id={index}
-                                        img={item.img}
-                                        title={item.title}
-                                        category={item.category}
-                                    />
-                                </div>
-                            )
-                        })}
-                    </>) : (<>
-                        <div className="col mt-5">
-                            <h1>Cards, Não Há Produtos / Verefique sua conexão com a API</h1>
-                        </div>
-                    </>)}
+                    <div className="col-sm-3">
+                        <Card />
+                    </div>
+
+                    {/* {data.length > 0 ? (
+                        <>
+                            {data.map((item: any, index: any) => {
+                                return (
+                                    <div className="col-sm-3">
+                                        
+                                    </div>
+                                )
+                            })}
+                        </>
+                    ) : (
+                        <>
+                            <div className="col mt-5">
+                                <h1>Cards, Não Há Produtos / Verefique sua conexão com a API</h1>
+                            </div>
+                        </>
+                    )
+                    } */}
                 </div>
             </section>
         </>
