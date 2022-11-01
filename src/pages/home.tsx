@@ -6,7 +6,7 @@ import { toast } from "react-toastify";
 
 export default function Home() {
 
-    const [data, setData] = useState([]);
+    const [data] = useState([]);
     useEffect(() => {
         try {
             getProduct()
@@ -15,6 +15,7 @@ export default function Home() {
             alert(e);
         }
     }, [])
+
     const getProduct = async () => {
         const response = await Api.get("/product/index");
         if (response.status === 200) {
@@ -22,23 +23,23 @@ export default function Home() {
         }
     }
 
-
     return (
         <>
             <Helmet><title>Home</title></Helmet>
             {/* <Haeder /> */}
             <section className="resume-section">
                 <div className="resume-section-content">
-                    <div className="col-sm-3">
+                    {/* <div className="col-sm-3">
                         <Card />
-                    </div>
+                    </div> */}
 
-                    {/* {data.length > 0 ? (
+                    {data.length > 0 ? 
+                    (
                         <>
-                            {data.map((item: any, index: any) => {
+                            {data.map((item) => {
                                 return (
                                     <div className="col-sm-3">
-                                        
+                                        <Card />
                                     </div>
                                 )
                             })}
@@ -49,8 +50,7 @@ export default function Home() {
                                 <h1>Cards, Não Há Produtos / Verefique sua conexão com a API</h1>
                             </div>
                         </>
-                    )
-                    } */}
+                    )}
                 </div>
             </section>
         </>
