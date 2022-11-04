@@ -17,7 +17,7 @@ export default function Home() {
     }, [])
 
     const getProduct = async () => {
-        const response = await Api.get("/product/index");
+        const response = await Api.get("product/index");
         if (response.status === 200) {
             toast.success(response.data);
         }
@@ -29,11 +29,11 @@ export default function Home() {
             {/* <Haeder /> */}
             <section className="resume-section">
                 <div className="resume-section-content">
-                    {/* <div className="col-sm-3">
+                    <div className="col-sm-3">
                         <Card />
-                    </div> */}
+                    </div>
 
-                    {data.length > 0 ? 
+                    {/* {data.length > 0 ? 
                     (
                         <>
                             {data.map((item) => {
@@ -50,7 +50,7 @@ export default function Home() {
                                 <h1>Cards, Não Há Produtos / Verefique sua conexão com a API</h1>
                             </div>
                         </>
-                    )}
+                    )} */}
                 </div>
             </section>
         </>
